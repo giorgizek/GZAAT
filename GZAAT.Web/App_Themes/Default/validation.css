@@ -1,0 +1,50 @@
+﻿.validation-summary {
+    margin: 5px 0 10px 0;
+    padding: 10px;
+    font-size: 16px;
+    color: #000;
+    border: 1px solid #992A2A;
+    background: #F2DDDD;
+}
+
+    .validation-summary ul, .validation-summary ul li {
+        margin: 10px 0 0 0;
+        padding: 0;
+        color: #992A2A;
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+        .validation-summary ul li {
+            margin: 2px 0 7px 20px;
+            list-style-type: square;
+            background-image: none;
+        }
+
+.field-validator {
+    display: inline-block;
+    color: Red;
+    background: transparent no-repeat url('../../Images/Icons/error.gif') center;
+    width: 16px;
+    height: 16px;
+}
+    .field-validator span {
+        display: none;
+    }
+
+
+input.error, select.error, textarea.error {
+    background: #fed !important;
+    border: 1px solid #e00 !important;
+}/*#DE3914*/
+
+span.error {
+    /*float: left;*/
+    display: inline-block;
+    margin: 0 0 0 5px;
+    padding: 3px;
+    width: auto;
+    font-weight: bold;
+    color: #fff;
+    background: red;
+}

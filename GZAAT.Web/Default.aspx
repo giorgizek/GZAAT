@@ -1,0 +1,1 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/App_Master/Base.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="GZAAT.Web.Default" %>

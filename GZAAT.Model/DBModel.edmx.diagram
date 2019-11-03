@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="63a413ab96594c93a37f910c548b672e" Name="Diagram1" ZoomLevel="81">
+        <EntityTypeShape EntityType="DBModel.T_Contragent" Width="1.5" PointX="3.375" PointY="4" />
+        <EntityTypeShape EntityType="DBModel.T_Debt" Width="1.5" PointX="3.375" PointY="0.625" />
+        <EntityTypeShape EntityType="DBModel.T_Mobile" Width="1.5" PointX="8.625" PointY="2.25" />
+        <AssociationConnector Association="DBModel.FK_T_Debt_T_Contragent_ContragentID" />
+        <EntityTypeShape EntityType="DBModel.T_DebtDetail" Width="1.5" PointX="5.5" PointY="0.75" />
+        <AssociationConnector Association="DBModel.FK_T_DebtDetail_T_Debt_ID" />
+        <AssociationConnector Association="DBModel.FK_T_DebtDetail_T_Mobile_MobileID" />
+        <EntityTypeShape EntityType="DBModel.T_SMS" Width="1.5" PointX="15.125" PointY="1.625" />
+        <EntityTypeShape EntityType="DBModel.T_SMSDetail" Width="1.5" PointX="12.75" PointY="0.875" />
+        <AssociationConnector Association="DBModel.FK_T_SMSDetail_T_Mobile_MobileID" />
+        <AssociationConnector Association="DBModel.FK_T_SMSDetail_T_SMS_ID" />
+        <EntityTypeShape EntityType="DBModel.VW_DebtDetail_List" Width="2.25" PointX="19.625" PointY="6.875" FillColor="Orange" />
+        <EntityTypeShape EntityType="DBModel.VW_SMSDetail_List" Width="2" PointX="17.25" PointY="6.875" FillColor="Orange" />
+        <EntityTypeShape EntityType="DBModel.T_DebtDetailLog" Width="1.75" PointX="5.875" PointY="4.5" />
+        <EntityTypeShape EntityType="DBModel.T_SMSDetailLog" Width="1.5" PointX="12.375" PointY="4.25" />
+        <AssociationConnector Association="DBModel.FK_T_DebtDetailLog_T_DebtDetail_DebtID_MobileID" />
+        <AssociationConnector Association="DBModel.FK_T_SMSDetailLog_T_SMSDetail_SMSID_MobileID" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

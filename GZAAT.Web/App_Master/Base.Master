@@ -1,0 +1,57 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Base.master.cs" Inherits="GZAAT.Web.App_Master.Base" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>GZAAT</title>
+    <meta charset="utf-8" />
+    <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <script src="../Scripts/jquery.js"></script>
+    <asp:ContentPlaceHolder ID="cphHead" runat="server" />
+</head>
+<body>
+    <form id="frmMain" runat="server">
+        <telerik:RadScriptManager ID="RadScriptManager1" runat="server" />
+        <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server" />
+        <telerik:RadSkinManager ID="RadSkinManager1" runat="server" Skin="Metro" />
+        <telerik:RadFormDecorator ID="RadFormDecorator1" runat="server" DecoratedControls="All" />
+
+        <div id="pageContainer">
+            <%--<header id="pageHeader"></header>--%>
+            <nav id="pageNav">
+                <telerik:RadMenu ID="RadMenu1" runat="server" Width="100%">
+                    <Items>
+                        <telerik:RadMenuItem runat="server" NavigateUrl="~/1C.aspx" Text="<%$ Resources: ApplicationResources, DebtorList %>" ImageUrl="~/Images/Icons/money_16x16.png" />
+                        <telerik:RadMenuItem IsSeparator="true" />
+                        <telerik:RadMenuItem runat="server" NavigateUrl="~/Excel.aspx" Text="<%$ Resources: ApplicationResources, UploadExcel %>" ImageUrl="~/Images/Icons/excel_16x16.png" />
+                        <telerik:RadMenuItem IsSeparator="true" />
+                        <telerik:RadMenuItem runat="server" NavigateUrl="~/DebtList.aspx" Text="<%$ Resources: ApplicationResources, DebtList %>" ImageUrl="~/Images/Icons/message_16x16.png" />
+                        <telerik:RadMenuItem IsSeparator="true" />
+                        <telerik:RadMenuItem runat="server" NavigateUrl="~/StaticSMS.aspx" Text="<%$ Resources: ApplicationResources, StaticSMS %>" ImageUrl="~/Images/Icons/mobilephone2_16x16.png" />
+                        <telerik:RadMenuItem IsSeparator="true" />
+                        <telerik:RadMenuItem runat="server" NavigateUrl="~/About.aspx" Text="<%$ Resources: ApplicationResources, About %>" ImageUrl="~/Images/Icons/about_16x16.png" />
+                    </Items>
+                </telerik:RadMenu>
+            </nav>
+            <asp:ContentPlaceHolder ID="cphPageSection" runat="server">
+            </asp:ContentPlaceHolder>
+            <%--            <telerik:RadSplitter ID="rsMain" runat="server" Height="100%" Width="100%" HeightOffset="66">
+                <telerik:RadPane ID="rpLeft" runat="server" MinWidth="240" Width="240px">
+                    <!-- main menu -->
+                </telerik:RadPane>
+                <telerik:RadSplitBar ID="rsbContent" runat="server" CollapseMode="Forward" EnableResize="false" />
+                <telerik:RadPane ID="rpArticle" runat="server" Height="100%">
+                    <section id="pageSection">
+                        <asp:ContentPlaceHolder ID="cphPageSection" runat="server">
+                            <header class="sectionHeader"></header>
+                            <article class="sectionArticle"></article>
+                            <footer class="sectionFooter"></footer>
+                        </asp:ContentPlaceHolder>
+                    </section>
+                </telerik:RadPane>
+            </telerik:RadSplitter>--%>
+        </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,861 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="T_Contragent">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code1C" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="PersonalNumber" Type="nvarchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_Debt">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContragentID" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Amount" Type="money" Nullable="false" />
+          <Property Name="Currency" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Message" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="IP" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Grade" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_DebtDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="MobileID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="MobileID" Type="int" Nullable="false" />
+          <Property Name="RelationTypeID" Type="tinyint" Nullable="false" />
+          <Property Name="StatusID" Type="tinyint" Nullable="false" />
+          <Property Name="SentDate" Type="datetime" />
+          <Property Name="TryCount" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_DebtDetailLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DebtID" Type="int" Nullable="false" />
+          <Property Name="MobileID" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="URL" Type="nvarchar" MaxLength="1855" Nullable="false" />
+          <Property Name="Response" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="Exception" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="T_Mobile">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="T_SMS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Message" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_SMSDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="MobileID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="MobileID" Type="int" Nullable="false" />
+          <Property Name="StatusID" Type="tinyint" Nullable="false" />
+          <Property Name="SentDate" Type="datetime" />
+          <Property Name="TryCount" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_SMSDetailLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SMSID" Type="int" Nullable="false" />
+          <Property Name="MobileID" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="URL" Type="nvarchar" MaxLength="1855" Nullable="false" />
+          <Property Name="Response" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="Exception" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'GZAAT.dbo.VW_DebtDetail_List' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VW_DebtDetail_List">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="MobileID" />
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <PropertyRef Name="Grade" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="MobileID" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Code1C" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="PersonalNumber" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="Amount" Type="money" Nullable="false" />
+          <Property Name="Currency" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Message" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MobileOwner" Type="nvarchar" MaxLength="150" />
+          <Property Name="RelationTypeID" Type="tinyint" Nullable="false" />
+          <Property Name="StatusID" Type="tinyint" Nullable="false" />
+          <Property Name="SentDate" Type="datetime" />
+          <Property Name="TryCount" Type="tinyint" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="IP" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Grade" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'GZAAT.dbo.VW_SMSDetail_List' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VW_SMSDetail_List">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="MobileID" />
+            
+            
+            
+            
+            
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="MobileID" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MobileOwner" Type="nvarchar" MaxLength="150" />
+          <Property Name="StatusID" Type="tinyint" Nullable="false" />
+          <Property Name="SentDate" Type="datetime" />
+          <Property Name="TryCount" Type="tinyint" Nullable="false" />
+          <Property Name="Message" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_T_Debt_T_Contragent_ContragentID">
+          <End Role="T_Contragent" Type="Self.T_Contragent" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="T_Debt" Type="Self.T_Debt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Contragent">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="T_Debt">
+              <PropertyRef Name="ContragentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_DebtDetail_T_Debt_ID">
+          <End Role="T_Debt" Type="Self.T_Debt" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="T_DebtDetail" Type="Self.T_DebtDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Debt">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="T_DebtDetail">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_DebtDetail_T_Mobile_MobileID">
+          <End Role="T_Mobile" Type="Self.T_Mobile" Multiplicity="1" />
+          <End Role="T_DebtDetail" Type="Self.T_DebtDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Mobile">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="T_DebtDetail">
+              <PropertyRef Name="MobileID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_DebtDetailLog_T_DebtDetail_DebtID_MobileID">
+          <End Role="T_DebtDetail" Type="Self.T_DebtDetail" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="T_DebtDetailLog" Type="Self.T_DebtDetailLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_DebtDetail">
+              <PropertyRef Name="ID" />
+              <PropertyRef Name="MobileID" />
+            </Principal>
+            <Dependent Role="T_DebtDetailLog">
+              <PropertyRef Name="DebtID" />
+              <PropertyRef Name="MobileID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_SMSDetail_T_Mobile_MobileID">
+          <End Role="T_Mobile" Type="Self.T_Mobile" Multiplicity="1" />
+          <End Role="T_SMSDetail" Type="Self.T_SMSDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Mobile">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="T_SMSDetail">
+              <PropertyRef Name="MobileID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_SMSDetail_T_SMS_ID">
+          <End Role="T_SMS" Type="Self.T_SMS" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="T_SMSDetail" Type="Self.T_SMSDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_SMS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="T_SMSDetail">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_SMSDetailLog_T_SMSDetail_SMSID_MobileID">
+          <End Role="T_SMSDetail" Type="Self.T_SMSDetail" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="T_SMSDetailLog" Type="Self.T_SMSDetailLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_SMSDetail">
+              <PropertyRef Name="ID" />
+              <PropertyRef Name="MobileID" />
+            </Principal>
+            <Dependent Role="T_SMSDetailLog">
+              <PropertyRef Name="SMSID" />
+              <PropertyRef Name="MobileID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="SP_Debt_GetForSend" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_Debt_Save" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="mobileID" Type="int" Mode="In" />
+          <Parameter Name="statusID" Type="tinyint" Mode="In" />
+        </Function>
+        <Function Name="SP_SMS_GetForSend" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_SMS_Save" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="mobileID" Type="int" Mode="In" />
+          <Parameter Name="statusID" Type="tinyint" Mode="In" />
+        </Function>
+        <Function Name="SP_T_DebtDetailLog_Save" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="debtID" Type="int" Mode="In" />
+          <Parameter Name="mobileID" Type="int" Mode="In" />
+          <Parameter Name="url" Type="nvarchar" Mode="In" />
+          <Parameter Name="response" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="exception" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="SP_T_SMSDetailLog_Save" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="smsID" Type="int" Mode="In" />
+          <Parameter Name="mobileID" Type="int" Mode="In" />
+          <Parameter Name="url" Type="nvarchar" Mode="In" />
+          <Parameter Name="response" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="exception" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <EntityContainer Name="DBModelStoreContainer">
+          <EntitySet Name="T_Contragent" EntityType="Self.T_Contragent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_Debt" EntityType="Self.T_Debt" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_DebtDetail" EntityType="Self.T_DebtDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_DebtDetailLog" EntityType="Self.T_DebtDetailLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_Mobile" EntityType="Self.T_Mobile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_SMS" EntityType="Self.T_SMS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_SMSDetail" EntityType="Self.T_SMSDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_SMSDetailLog" EntityType="Self.T_SMSDetailLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VW_DebtDetail_List" EntityType="Self.VW_DebtDetail_List" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VW_DebtDetail_List].[ID] AS [ID], 
+    [VW_DebtDetail_List].[MobileID] AS [MobileID], 
+    [VW_DebtDetail_List].[Date] AS [Date], 
+    [VW_DebtDetail_List].[Code1C] AS [Code1C], 
+    [VW_DebtDetail_List].[Name] AS [Name], 
+    [VW_DebtDetail_List].[PersonalNumber] AS [PersonalNumber], 
+    [VW_DebtDetail_List].[Amount] AS [Amount], 
+    [VW_DebtDetail_List].[Currency] AS [Currency], 
+    [VW_DebtDetail_List].[Message] AS [Message], 
+    [VW_DebtDetail_List].[Mobile] AS [Mobile], 
+    [VW_DebtDetail_List].[MobileOwner] AS [MobileOwner], 
+    [VW_DebtDetail_List].[RelationTypeID] AS [RelationTypeID], 
+    [VW_DebtDetail_List].[StatusID] AS [StatusID], 
+    [VW_DebtDetail_List].[SentDate] AS [SentDate], 
+    [VW_DebtDetail_List].[TryCount] AS [TryCount], 
+    [VW_DebtDetail_List].[CreateDate] AS [CreateDate], 
+    [VW_DebtDetail_List].[IP] AS [IP], 
+    [VW_DebtDetail_List].[Grade] AS [Grade]
+    FROM [dbo].[VW_DebtDetail_List] AS [VW_DebtDetail_List]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VW_SMSDetail_List" EntityType="Self.VW_SMSDetail_List" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VW_SMSDetail_List].[ID] AS [ID], 
+    [VW_SMSDetail_List].[MobileID] AS [MobileID], 
+    [VW_SMSDetail_List].[Date] AS [Date], 
+    [VW_SMSDetail_List].[Mobile] AS [Mobile], 
+    [VW_SMSDetail_List].[MobileOwner] AS [MobileOwner], 
+    [VW_SMSDetail_List].[StatusID] AS [StatusID], 
+    [VW_SMSDetail_List].[SentDate] AS [SentDate], 
+    [VW_SMSDetail_List].[TryCount] AS [TryCount], 
+    [VW_SMSDetail_List].[Message] AS [Message]
+    FROM [dbo].[VW_SMSDetail_List] AS [VW_SMSDetail_List]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_T_Debt_T_Contragent_ContragentID" Association="Self.FK_T_Debt_T_Contragent_ContragentID">
+            <End Role="T_Contragent" EntitySet="T_Contragent" />
+            <End Role="T_Debt" EntitySet="T_Debt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_DebtDetail_T_Debt_ID" Association="Self.FK_T_DebtDetail_T_Debt_ID">
+            <End Role="T_Debt" EntitySet="T_Debt" />
+            <End Role="T_DebtDetail" EntitySet="T_DebtDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_DebtDetail_T_Mobile_MobileID" Association="Self.FK_T_DebtDetail_T_Mobile_MobileID">
+            <End Role="T_Mobile" EntitySet="T_Mobile" />
+            <End Role="T_DebtDetail" EntitySet="T_DebtDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_DebtDetailLog_T_DebtDetail_DebtID_MobileID" Association="Self.FK_T_DebtDetailLog_T_DebtDetail_DebtID_MobileID">
+            <End Role="T_DebtDetail" EntitySet="T_DebtDetail" />
+            <End Role="T_DebtDetailLog" EntitySet="T_DebtDetailLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_SMSDetail_T_Mobile_MobileID" Association="Self.FK_T_SMSDetail_T_Mobile_MobileID">
+            <End Role="T_Mobile" EntitySet="T_Mobile" />
+            <End Role="T_SMSDetail" EntitySet="T_SMSDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_SMSDetail_T_SMS_ID" Association="Self.FK_T_SMSDetail_T_SMS_ID">
+            <End Role="T_SMS" EntitySet="T_SMS" />
+            <End Role="T_SMSDetail" EntitySet="T_SMSDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_SMSDetailLog_T_SMSDetail_SMSID_MobileID" Association="Self.FK_T_SMSDetailLog_T_SMSDetail_SMSID_MobileID">
+            <End Role="T_SMSDetail" EntitySet="T_SMSDetail" />
+            <End Role="T_SMSDetailLog" EntitySet="T_SMSDetailLog" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DBEntities" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+          <EntitySet Name="T_Contragent" EntityType="DBModel.T_Contragent" />
+          <EntitySet Name="T_Debt" EntityType="DBModel.T_Debt" />
+          <EntitySet Name="T_Mobile" EntityType="DBModel.T_Mobile" />
+          <AssociationSet Name="FK_T_Debt_T_Contragent_ContragentID" Association="DBModel.FK_T_Debt_T_Contragent_ContragentID">
+            <End Role="T_Contragent" EntitySet="T_Contragent" />
+            <End Role="T_Debt" EntitySet="T_Debt" />
+          </AssociationSet>
+          <EntitySet Name="T_DebtDetail" EntityType="DBModel.T_DebtDetail" />
+          <AssociationSet Name="FK_T_DebtDetail_T_Debt_ID" Association="DBModel.FK_T_DebtDetail_T_Debt_ID">
+            <End Role="T_Debt" EntitySet="T_Debt" />
+            <End Role="T_DebtDetail" EntitySet="T_DebtDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_DebtDetail_T_Mobile_MobileID" Association="DBModel.FK_T_DebtDetail_T_Mobile_MobileID">
+            <End Role="T_Mobile" EntitySet="T_Mobile" />
+            <End Role="T_DebtDetail" EntitySet="T_DebtDetail" />
+          </AssociationSet>
+          <EntitySet Name="T_SMS" EntityType="DBModel.T_SMS" />
+          <EntitySet Name="T_SMSDetail" EntityType="DBModel.T_SMSDetail" />
+          <AssociationSet Name="FK_T_SMSDetail_T_Mobile_MobileID" Association="DBModel.FK_T_SMSDetail_T_Mobile_MobileID">
+            <End Role="T_Mobile" EntitySet="T_Mobile" />
+            <End Role="T_SMSDetail" EntitySet="T_SMSDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_SMSDetail_T_SMS_ID" Association="DBModel.FK_T_SMSDetail_T_SMS_ID">
+            <End Role="T_SMS" EntitySet="T_SMS" />
+            <End Role="T_SMSDetail" EntitySet="T_SMSDetail" />
+          </AssociationSet>
+          <EntitySet Name="VW_DebtDetail_List" EntityType="DBModel.VW_DebtDetail_List" />
+          <EntitySet Name="VW_SMSDetail_List" EntityType="DBModel.VW_SMSDetail_List" />
+          <FunctionImport Name="SP_Debt_GetForSend" ReturnType="Collection(DBModel.SP_Debt_GetForSend_Result)" />
+          <FunctionImport Name="SP_SMS_GetForSend" ReturnType="Collection(DBModel.SP_SMS_GetForSend_Result)" />
+          <FunctionImport Name="SP_Debt_Save">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="mobileID" Mode="In" Type="Int32" />
+            <Parameter Name="statusID" Mode="In" Type="Byte" />
+          </FunctionImport>
+          <FunctionImport Name="SP_SMS_Save">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="mobileID" Mode="In" Type="Int32" />
+            <Parameter Name="statusID" Mode="In" Type="Byte" />
+          </FunctionImport>
+          <FunctionImport Name="SP_T_SMSDetailLog_Save">
+            <Parameter Name="smsID" Mode="In" Type="Int32" />
+            <Parameter Name="mobileID" Mode="In" Type="Int32" />
+            <Parameter Name="url" Mode="In" Type="String" />
+            <Parameter Name="response" Mode="In" Type="String" />
+            <Parameter Name="exception" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_T_DebtDetailLog_Save">
+            <Parameter Name="debtID" Mode="In" Type="Int32" />
+            <Parameter Name="mobileID" Mode="In" Type="Int32" />
+            <Parameter Name="url" Mode="In" Type="String" />
+            <Parameter Name="response" Mode="In" Type="String" />
+            <Parameter Name="exception" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="T_DebtDetailLog" EntityType="DBModel.T_DebtDetailLog" />
+          <EntitySet Name="T_SMSDetailLog" EntityType="DBModel.T_SMSDetailLog" />
+          <AssociationSet Name="FK_T_DebtDetailLog_T_DebtDetail_DebtID_MobileID" Association="DBModel.FK_T_DebtDetailLog_T_DebtDetail_DebtID_MobileID">
+            <End Role="T_DebtDetail" EntitySet="T_DebtDetail" />
+            <End Role="T_DebtDetailLog" EntitySet="T_DebtDetailLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_SMSDetailLog_T_SMSDetail_SMSID_MobileID" Association="DBModel.FK_T_SMSDetailLog_T_SMSDetail_SMSID_MobileID">
+            <End Role="T_SMSDetail" EntitySet="T_SMSDetail" />
+            <End Role="T_SMSDetailLog" EntitySet="T_SMSDetailLog" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="T_Contragent">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="String" Name="Code1C" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PersonalNumber" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="T_Debt" Relationship="DBModel.FK_T_Debt_T_Contragent_ContragentID" FromRole="T_Contragent" ToRole="T_Debt" />
+        </EntityType>
+        <EntityType Name="T_Debt">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="Int32" Name="ContragentID" Nullable="false" />
+          <Property Type="DateTime" Name="Date" Nullable="false" Precision="3" />
+          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="String" Name="Currency" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Message" Nullable="false" FixedLength="false" Unicode="true" MaxLength="500" />
+          <Property Type="DateTime" Name="CreateDate" Nullable="false" Precision="3" />
+          <Property Type="String" Name="IP" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="T_Contragent" Relationship="DBModel.FK_T_Debt_T_Contragent_ContragentID" FromRole="T_Debt" ToRole="T_Contragent" />
+          <NavigationProperty Name="T_DebtDetail" Relationship="DBModel.FK_T_DebtDetail_T_Debt_ID" FromRole="T_Debt" ToRole="T_DebtDetail" />
+          <Property Name="Grade" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="T_Mobile">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="String" Name="Mobile" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="T_DebtDetail" Relationship="DBModel.FK_T_DebtDetail_T_Mobile_MobileID" FromRole="T_Mobile" ToRole="T_DebtDetail" />
+          <NavigationProperty Name="T_SMSDetail" Relationship="DBModel.FK_T_SMSDetail_T_Mobile_MobileID" FromRole="T_Mobile" ToRole="T_SMSDetail" />
+          <Property Type="String" Name="Name" MaxLength="150" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_T_Debt_T_Contragent_ContragentID">
+          <End Type="DBModel.T_Contragent" Role="T_Contragent" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DBModel.T_Debt" Role="T_Debt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Contragent">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="T_Debt">
+              <PropertyRef Name="ContragentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="T_DebtDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="MobileID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="MobileID" Nullable="false" />
+          <Property Type="Byte" Name="RelationTypeID" Nullable="false" />
+          <Property Type="Byte" Name="StatusID" Nullable="false" />
+          <Property Type="DateTime" Name="SentDate" Precision="3" />
+          <Property Type="Byte" Name="TryCount" Nullable="false" />
+          <NavigationProperty Name="T_Debt" Relationship="DBModel.FK_T_DebtDetail_T_Debt_ID" FromRole="T_DebtDetail" ToRole="T_Debt" />
+          <NavigationProperty Name="T_Mobile" Relationship="DBModel.FK_T_DebtDetail_T_Mobile_MobileID" FromRole="T_DebtDetail" ToRole="T_Mobile" />
+          <NavigationProperty Name="T_DebtDetailLog" Relationship="DBModel.FK_T_DebtDetailLog_T_DebtDetail_DebtID_MobileID" FromRole="T_DebtDetail" ToRole="T_DebtDetailLog" />
+        </EntityType>
+        <Association Name="FK_T_DebtDetail_T_Debt_ID">
+          <End Type="DBModel.T_Debt" Role="T_Debt" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DBModel.T_DebtDetail" Role="T_DebtDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Debt">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="T_DebtDetail">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_DebtDetail_T_Mobile_MobileID">
+          <End Type="DBModel.T_Mobile" Role="T_Mobile" Multiplicity="1" />
+          <End Type="DBModel.T_DebtDetail" Role="T_DebtDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Mobile">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="T_DebtDetail">
+              <PropertyRef Name="MobileID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="T_SMS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="DateTime" Name="Date" Nullable="false" Precision="3" />
+          <Property Type="String" Name="Message" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="T_SMSDetail" Relationship="DBModel.FK_T_SMSDetail_T_SMS_ID" FromRole="T_SMS" ToRole="T_SMSDetail" />
+        </EntityType>
+        <EntityType Name="T_SMSDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="MobileID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="MobileID" Nullable="false" />
+          <Property Type="Byte" Name="StatusID" Nullable="false" />
+          <Property Type="DateTime" Name="SentDate" Precision="3" />
+          <Property Type="Byte" Name="TryCount" Nullable="false" />
+          <NavigationProperty Name="T_Mobile" Relationship="DBModel.FK_T_SMSDetail_T_Mobile_MobileID" FromRole="T_SMSDetail" ToRole="T_Mobile" />
+          <NavigationProperty Name="T_SMS" Relationship="DBModel.FK_T_SMSDetail_T_SMS_ID" FromRole="T_SMSDetail" ToRole="T_SMS" />
+          <NavigationProperty Name="T_SMSDetailLog" Relationship="DBModel.FK_T_SMSDetailLog_T_SMSDetail_SMSID_MobileID" FromRole="T_SMSDetail" ToRole="T_SMSDetailLog" />
+        </EntityType>
+        <Association Name="FK_T_SMSDetail_T_Mobile_MobileID">
+          <End Type="DBModel.T_Mobile" Role="T_Mobile" Multiplicity="1" />
+          <End Type="DBModel.T_SMSDetail" Role="T_SMSDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Mobile">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="T_SMSDetail">
+              <PropertyRef Name="MobileID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_SMSDetail_T_SMS_ID">
+          <End Type="DBModel.T_SMS" Role="T_SMS" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DBModel.T_SMSDetail" Role="T_SMSDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_SMS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="T_SMSDetail">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="VW_DebtDetail_List">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="MobileID" />
+            <PropertyRef Name="Grade" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="MobileID" Nullable="false" />
+          <Property Type="DateTime" Name="Date" Nullable="false" Precision="3" />
+          <Property Type="String" Name="Code1C" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PersonalNumber" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="String" Name="Currency" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Message" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Mobile" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Byte" Name="RelationTypeID" Nullable="false" />
+          <Property Type="Byte" Name="StatusID" Nullable="false" />
+          <Property Type="DateTime" Name="SentDate" Precision="3" />
+          <Property Type="Byte" Name="TryCount" Nullable="false" />
+          <Property Type="DateTime" Name="CreateDate" Nullable="false" Precision="3" />
+          <Property Type="String" Name="IP" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="MobileOwner" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Grade" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="VW_SMSDetail_List">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="MobileID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="MobileID" Nullable="false" />
+          <Property Type="DateTime" Name="Date" Nullable="false" Precision="3" />
+          <Property Type="String" Name="Mobile" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Byte" Name="StatusID" Nullable="false" />
+          <Property Type="DateTime" Name="SentDate" Precision="3" />
+          <Property Type="Byte" Name="TryCount" Nullable="false" />
+          <Property Type="String" Name="Message" Nullable="false" FixedLength="false" Unicode="true" MaxLength="255" />
+          <Property Type="String" Name="MobileOwner" MaxLength="150" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <ComplexType Name="SP_Debt_GetForSend_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="MobileID" Nullable="false" />
+          <Property Type="DateTime" Name="Date" Nullable="false" Precision="23" />
+          <Property Type="String" Name="Mobile" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Message" Nullable="false" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="SP_SMS_GetForSend_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="MobileID" Nullable="false" />
+          <Property Type="DateTime" Name="Date" Nullable="false" />
+          <Property Type="String" Name="Mobile" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Message" Nullable="false" MaxLength="255" />
+        </ComplexType>
+        <EntityType Name="T_DebtDetailLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="Int32" Name="DebtID" Nullable="false" />
+          <Property Type="Int32" Name="MobileID" Nullable="false" />
+          <Property Type="DateTime" Name="Date" Nullable="false" Precision="3" />
+          <Property Type="String" Name="URL" Nullable="false" MaxLength="1855" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Response" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Exception" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="T_DebtDetail" Relationship="DBModel.FK_T_DebtDetailLog_T_DebtDetail_DebtID_MobileID" FromRole="T_DebtDetailLog" ToRole="T_DebtDetail" />
+        </EntityType>
+        <EntityType Name="T_SMSDetailLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="Int32" Name="SMSID" Nullable="false" />
+          <Property Type="Int32" Name="MobileID" Nullable="false" />
+          <Property Type="DateTime" Name="Date" Nullable="false" Precision="3" />
+          <Property Type="String" Name="URL" Nullable="false" MaxLength="1855" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Response" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Exception" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="T_SMSDetail" Relationship="DBModel.FK_T_SMSDetailLog_T_SMSDetail_SMSID_MobileID" FromRole="T_SMSDetailLog" ToRole="T_SMSDetail" />
+        </EntityType>
+        <Association Name="FK_T_DebtDetailLog_T_DebtDetail_DebtID_MobileID">
+          <End Type="DBModel.T_DebtDetail" Role="T_DebtDetail" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DBModel.T_DebtDetailLog" Role="T_DebtDetailLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_DebtDetail">
+              <PropertyRef Name="ID" />
+              <PropertyRef Name="MobileID" />
+            </Principal>
+            <Dependent Role="T_DebtDetailLog">
+              <PropertyRef Name="DebtID" />
+              <PropertyRef Name="MobileID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_SMSDetailLog_T_SMSDetail_SMSID_MobileID">
+          <End Type="DBModel.T_SMSDetail" Role="T_SMSDetail" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DBModel.T_SMSDetailLog" Role="T_SMSDetailLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_SMSDetail">
+              <PropertyRef Name="ID" />
+              <PropertyRef Name="MobileID" />
+            </Principal>
+            <Dependent Role="T_SMSDetailLog">
+              <PropertyRef Name="SMSID" />
+              <PropertyRef Name="MobileID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBModelStoreContainer" CdmEntityContainer="DBEntities">
+          <EntitySetMapping Name="T_Contragent">
+            <EntityTypeMapping TypeName="DBModel.T_Contragent">
+              <MappingFragment StoreEntitySet="T_Contragent">
+                <ScalarProperty Name="PersonalNumber" ColumnName="PersonalNumber" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code1C" ColumnName="Code1C" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Debt">
+            <EntityTypeMapping TypeName="DBModel.T_Debt">
+              <MappingFragment StoreEntitySet="T_Debt">
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="ContragentID" ColumnName="ContragentID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Mobile">
+            <EntityTypeMapping TypeName="DBModel.T_Mobile">
+              <MappingFragment StoreEntitySet="T_Mobile">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_DebtDetail">
+            <EntityTypeMapping TypeName="DBModel.T_DebtDetail">
+              <MappingFragment StoreEntitySet="T_DebtDetail">
+                <ScalarProperty Name="TryCount" ColumnName="TryCount" />
+                <ScalarProperty Name="SentDate" ColumnName="SentDate" />
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="RelationTypeID" ColumnName="RelationTypeID" />
+                <ScalarProperty Name="MobileID" ColumnName="MobileID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_SMS">
+            <EntityTypeMapping TypeName="DBModel.T_SMS">
+              <MappingFragment StoreEntitySet="T_SMS">
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_SMSDetail">
+            <EntityTypeMapping TypeName="DBModel.T_SMSDetail">
+              <MappingFragment StoreEntitySet="T_SMSDetail">
+                <ScalarProperty Name="TryCount" ColumnName="TryCount" />
+                <ScalarProperty Name="SentDate" ColumnName="SentDate" />
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="MobileID" ColumnName="MobileID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VW_DebtDetail_List">
+            <EntityTypeMapping TypeName="DBModel.VW_DebtDetail_List">
+              <MappingFragment StoreEntitySet="VW_DebtDetail_List">
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+                <ScalarProperty Name="MobileOwner" ColumnName="MobileOwner" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="TryCount" ColumnName="TryCount" />
+                <ScalarProperty Name="SentDate" ColumnName="SentDate" />
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="RelationTypeID" ColumnName="RelationTypeID" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="PersonalNumber" ColumnName="PersonalNumber" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code1C" ColumnName="Code1C" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="MobileID" ColumnName="MobileID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VW_SMSDetail_List">
+            <EntityTypeMapping TypeName="DBModel.VW_SMSDetail_List">
+              <MappingFragment StoreEntitySet="VW_SMSDetail_List">
+                <ScalarProperty Name="MobileOwner" ColumnName="MobileOwner" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="TryCount" ColumnName="TryCount" />
+                <ScalarProperty Name="SentDate" ColumnName="SentDate" />
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="MobileID" ColumnName="MobileID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_Debt_GetForSend" FunctionName="DBModel.Store.SP_Debt_GetForSend">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBModel.SP_Debt_GetForSend_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MobileID" ColumnName="MobileID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_SMS_GetForSend" FunctionName="DBModel.Store.SP_SMS_GetForSend">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBModel.SP_SMS_GetForSend_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MobileID" ColumnName="MobileID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_Debt_Save" FunctionName="DBModel.Store.SP_Debt_Save" />
+          <FunctionImportMapping FunctionImportName="SP_SMS_Save" FunctionName="DBModel.Store.SP_SMS_Save" />
+          <FunctionImportMapping FunctionImportName="SP_T_SMSDetailLog_Save" FunctionName="DBModel.Store.SP_T_SMSDetailLog_Save" />
+          <FunctionImportMapping FunctionImportName="SP_T_DebtDetailLog_Save" FunctionName="DBModel.Store.SP_T_DebtDetailLog_Save" />
+          <EntitySetMapping Name="T_DebtDetailLog">
+            <EntityTypeMapping TypeName="DBModel.T_DebtDetailLog">
+              <MappingFragment StoreEntitySet="T_DebtDetailLog">
+                <ScalarProperty Name="Exception" ColumnName="Exception" />
+                <ScalarProperty Name="Response" ColumnName="Response" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="MobileID" ColumnName="MobileID" />
+                <ScalarProperty Name="DebtID" ColumnName="DebtID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_SMSDetailLog">
+            <EntityTypeMapping TypeName="DBModel.T_SMSDetailLog">
+              <MappingFragment StoreEntitySet="T_SMSDetailLog">
+                <ScalarProperty Name="Exception" ColumnName="Exception" />
+                <ScalarProperty Name="Response" ColumnName="Response" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="MobileID" ColumnName="MobileID" />
+                <ScalarProperty Name="SMSID" ColumnName="SMSID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams />
+  </Designer>
+</edmx:Edmx>

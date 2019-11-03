@@ -1,0 +1,24 @@
+﻿/*@import url("reset.css");*/
+
+html, body, form {
+    height: 100%;
+}
+
+td {
+    vertical-align: top;
+}
+
+body {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    color: #333;
+    /*overflow:hidden;*/
+}
+
+
+.autoHeight {
+    height: auto !important;
+}
+.nw {
+    white-space: nowrap;
+}
